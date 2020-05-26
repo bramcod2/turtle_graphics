@@ -1,0 +1,85 @@
+
+
+<html>
+  
+  <head>
+    <title>Turtle</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" href="graphics.css">
+    
+    <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="webgl-utils.js"></script>
+
+    <!---------------------------------------------------------------------->
+    <!---------------------------- Line shaders ---------------------------->
+    <!---------------------------------------------------------------------->
+    <script id="lshader-fs" type="x-shader/x-fragment">
+      precision mediump float;
+      
+      varying vec4 vColor;
+
+      void main(void) {
+        gl_FragColor = vColor;
+      }
+    </script>
+    
+    <script id="lshader-vs" type="x-shader/x-vertex">
+      attribute vec3 aVertexPosition;
+      attribute vec4 aVertexColor;
+      
+      uniform mat4 uMVMatrix;
+      uniform mat4 uPMatrix;
+      
+      varying vec4 vColor;
+      
+      void main(void) {
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+      vColor = aVertexColor;
+      }
+    </script>
+    
+    
+    <script type="text/javascript" src="gl-init.js"></script>
+    <script type="text/javascript" src="file-reader.js"></script>
+
+    <!------------------------------------------------------------>
+    <!-- This is the file you will modify -->
+    <!------------------------------------------------------------>
+    <script type="text/javascript" src="turtle.js"></script>
+  </head>
+  
+  
+  <!------------------------------------------------------------>
+  <!----------------- Load elements of the form ---------------->
+  <!------------------------------------------------------------>
+  <body onload="webGLStart();">
+    <div id="container">    
+      <input type="file" onchange='loadFile(this)' id="LOAD_BUTTON_ID"/>
+      <br/>
+    </div>
+    <div id="container">
+      <textarea id="CODE_ID" style="width: 500px; height: 150px;">
+origin
+up
+left 90
+forward 25
+left 90
+forward 25
+right 180
+down
+color 1.0 0.0 0.0
+loop 4 {
+  forward 50
+  right 90
+}
+      </textarea>
+      <br/>
+      <button onclick="execute()">Execute</button>
+    </div>
+
+    <br/>
+    
+    <canvas id="turtle-canvas" style="border: none;" width="500" height="500"></canvas>
+  </body>
+  
+</html>

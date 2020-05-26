@@ -1,0 +1,83 @@
+color 1 1 0
+up
+forward 80
+left 90
+forward 80
+loop 40 {
+  up
+  forward 10
+  down
+  loop 4 {
+    forward 5
+    right 90
+  }
+  up
+  right 180
+  forward 10
+  right 180
+  right 9
+}
+origin
+right 90
+forward 95
+left 90
+loop 15 {
+  down
+  color  0 0 0
+  forward 5
+  color 0 1 0
+  left 90
+  up
+  forward 4
+  loop 3 {
+    down
+    right 135
+    forward 5
+    right 90
+    forward 5
+    right 135
+    up
+    forward 7
+    right 90
+    forward 4
+    left 90
+  }
+  left 90
+  forward 17
+  color 0 0 0
+  right 90
+  up
+  forward 10
+  right 90
+}
+origin
+up
+right 90
+forward 100
+left 180
+color 0 1 0
+down
+forward 200
+origin
+up
+forward 75
+right 90
+forward 25
+color 1 0 1
+left 90
+down
+forward 4
+right 180
+forward 8
+right 180
+forward 4
+right 90
+forward 10
+right 90
+forward 8
+right 180
+forward 16
+right 180
+forward 8
+left 90
+forward 4
